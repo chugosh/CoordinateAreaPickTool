@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29403.142
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoordManagerTool", "CoordManagerTool.csproj", "{BAEFAD65-F7F3-4FA5-AC08-7A832A97BF0C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAEFAD65-F7F3-4FA5-AC08-7A832A97BF0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAEFAD65-F7F3-4FA5-AC08-7A832A97BF0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAEFAD65-F7F3-4FA5-AC08-7A832A97BF0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAEFAD65-F7F3-4FA5-AC08-7A832A97BF0C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {50A0A58C-FCCE-4DBB-A02E-F24276818C3D}
+	EndGlobalSection
+EndGlobal
