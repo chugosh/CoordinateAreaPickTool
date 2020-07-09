@@ -14,6 +14,7 @@ namespace CoordManagerTool
     {
         private static CoordinateModel _coordInate = new CoordinateModel();
         private static Country _country = new Country();
+        //private static List<Point> _points = new List<Point>();
         public static void Main(string[] args)
         {
 
@@ -105,6 +106,66 @@ namespace CoordManagerTool
             }
         }
 
+
+        /// <summary>
+        /// 根据省份确定市 根据市确定区县 
+        /// 这样比较次数会少于计算出全国所有区县再比较的次数
+        /// </summary>
+        /// <param name="point"></param>
+        private static void LoadXmlDataTest(Point point)
+        {
+            var serializer = new XmlSerializer(typeof(Country));
+            using (StreamReader reader = new StreamReader("chinaBoudler.xml"))
+            {
+                //xml的所有数据的对象
+                _country = (Country)serializer.Deserialize(reader);
+                Test(point, _country.province);
+                //各个省份的范围
+                foreach (var t in _country.province)
+                {
+                    var p = GetPoints(t.rings);
+                    if(IsPointInPloy(point, p, out var name))
+                    {
+
+                    }
+                }
+            }
+        }
+
+
+        private static void Test(Point point, object o)
+        {
+            if(o is CountryProvinceCityPiecearea piecearea)
+            {
+                return;
+            }
+
+            foreach (var t in o)
+            {
+                var p = GetPoints(t.rings);
+                if (IsPointInPloy(point, p, out var name))
+                {
+                    Test(point, o);
+                }
+            }
+        }
+
+        private static Point[] GetPoints(string rings)
+        {
+            var points = new List<Point>();
+            var coordinates = rings.Split(",");
+            for (var i = 0; i < coordinates.Length; i++)
+            {
+                var coords = coordinates[i].Split(" ");
+                if (coords.Length < 2) continue;
+                points.Add(new Point()
+                {
+                    x = double.Parse(coords[0]),
+                    y = double.Parse(coords[1]),
+                });
+            }
+            return points.ToArray();
+        }
 
         private static List<List<Point>> _pointsList = new List<List<Point>>();
         private static void LoadJsonData()
